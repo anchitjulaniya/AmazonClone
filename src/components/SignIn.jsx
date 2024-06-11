@@ -4,13 +4,29 @@ import { Link } from "react-router-dom";
 import logo from "../assets/HomeCarousel/amazonin.svg";
 import { useState, useContext } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from "react-router-dom";
 
 import { auth } from "./firebase";
 
 export function SignIn() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleToast = () => {
+    toast("hello", {
+      position: "bottom-right",
+      autoClose: 1800,
+      closeOnClick: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+  }
 
   const handleSubmit = () => {
     if(password.length < 6 || password.trim() === "" ) {
@@ -24,14 +40,34 @@ export function SignIn() {
         // Signed in
         const user = userCredential.user;
         console.log(user);
+        toast("Loggedin Sucessfully!", {
+          position: "bottom-right",
+          autoClose: 1800,
+          closeOnClick: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
+          
+        
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // add tostify
+        toast(errorMessage, {
+          position: "bottom-right",
+          autoClose: 1800,
+          closeOnClick: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
+          
       });
   };
+
   const handleGoogleLogin = () => {
     // const auth = getAuth();
     const provider = new GoogleAuthProvider();
@@ -44,6 +80,15 @@ export function SignIn() {
         // The signed-in user info.
         const user = result.user;
         console.log(user);
+        toast("Loggedin Sucessfully!", {
+          position: "bottom-right",
+          autoClose: 1800,
+          closeOnClick: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
+          navigate("/");
         // IdP data available using getAdditionalUserInfo(result)
         // ...
       })
@@ -52,12 +97,21 @@ export function SignIn() {
         const errorCode = error.code;
         const errorMessage = error.message;
         // The email of the user's account used.
+        toast(errorMessage, {
+          position: "bottom-right",
+          autoClose: 1800,
+          closeOnClick: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
       });
   };
+
   const handleFacebookLogin = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -68,6 +122,14 @@ export function SignIn() {
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential.accessToken;
         console.log("Facebook Login done");
+        toast("Facebook Login done", {
+          position: "bottom-right",
+          autoClose: 1800,
+          closeOnClick: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
         // IdP data available using getAdditionalUserInfo(result)
         // ...
       })
@@ -75,6 +137,14 @@ export function SignIn() {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
+        toast(errorMessage, {
+          position: "bottom-right",
+          autoClose: 1800,
+          closeOnClick: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          }); 
         // The email of the user's account used.
         const email = error.customData.email;
         // The AuthCredential type that was used.
@@ -83,12 +153,14 @@ export function SignIn() {
         // ...
       });
   };
+
   return (
     <section>
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-16">
         <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
           <span className="h-[70px] flex items-center justify-center">
             <img
+              onClick={() => handleToast()}
               src={logo}
               className="px-2 py-[2px] h-[95%] rounded-sm"
               alt="amazon logo"

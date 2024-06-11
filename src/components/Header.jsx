@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import logo from "../assets/logo.png";
 import { LuMapPin } from "react-icons/lu";
 import { RiEnglishInput } from "react-icons/ri";
@@ -7,10 +7,62 @@ import { IoSearch } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaCaretDown } from "react-icons/fa";
 import {Link} from 'react-router-dom'
+import { getAuth, signOut } from "firebase/auth";
 
 import india from "../assets/india.png";
+import { toast, Bounce } from "react-toastify";
 
 function Header() {
+  const [name,setName ] = useState(null);
+  
+
+const auth = getAuth();
+
+  const user = auth.currentUser;
+if (user !== null) {
+  // The user object has basic properties such as display name, email, etc.
+  const displayName = user.displayName;
+
+  const email = user.email;
+  const photoURL = user.photoURL;
+  const emailVerified = user.emailVerified;
+  
+  console.log(displayName, email, photoURL, emailVerified);
+  const uid = user.uid;
+}
+
+const name2 = useRef(auth?.currentUser?.displayName)
+console.log(name2.current, name2);
+
+  useEffect(()=>{
+    const user = auth?.currentUser;
+    setName(user?.displayName);
+    console.log();
+  },[ auth?.currentUser])
+
+  const handleSignOut = ()=>{
+    console.log("logout clicked");
+    signOut(auth).then(() => {
+      toast("Logged Out", {
+        position: "bottom-right",
+        autoClose: 1800,
+        closeOnClick: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      })
+    }).catch((error) => {
+      // An error happened.
+      toast(error, {
+        position: "bottom-right",
+        autoClose: 1800,
+        closeOnClick: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      })
+    });
+  }
 
   const amazonCategories = [
     "All Categories",
@@ -97,15 +149,20 @@ function Header() {
           </button>
         </div>
 
-        <span className="h-[90%] flex items-end border hover:border-white border-[rgb(19,25,33)] rounded-sm px-2 pb-1 hover:cursor-pointer">
-          <img src={india} alt="" className="  h-[70%]" />
-          <span className="flex pb-[1px]"><RiEnglishInput className="font-extrabold text-white" /><FaCaretDown /></span>
+        <span  className="h-[90%] flex items-end border hover:border-white border-[rgb(19,25,33)] rounded-sm px-2 pb-1 hover:cursor-pointer">
+         { name ?
+          <span className=" font-semibold" onClick={handleSignOut}>Logout</span>
+          : <><img src={india} alt="" className="  h-[70%]" />
+          <span className="flex pb-[1px]"><RiEnglishInput className="font-extrabold text-white" /><FaCaretDown /></span></>
+          }
         </span>
+
+       
 
         <Link to='/signin'>
         <span className="h-[90%] flex flex-col border hover:border-white border-[rgb(19,25,33)] rounded-sm px-2 hover:cursor-pointer ">
             <span className="text-[rgb(220,220,220)] text-[12px]">
-              Hello, sign in
+              Hello, {user?.displayName ? user?.displayName : "sign in"}
             </span>
           <span className="text-[14px] text-[rgb(240,240,240)] font-bold flex items-end">
             Account & Lists <FaCaretDown className="mb-1" />
