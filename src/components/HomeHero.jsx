@@ -74,13 +74,13 @@ function HomeHero() {
 
 
   return (
-    <div className='bg-[rgb(227,230,230)] w-[100%] flex flex-col items-center justify-center pb-2'>
+    <div className='bg-[rgb(227,230,230)] w-[100%] flex flex-col items-center gap-4 justify-center pb-2'>
       
 
-         <div className='w-[97%] h-[420px] gap-5 flex items-center '>
+         <div className='w-[97%] flex-wrap gap-5 flex items-center justify-center '>
             {obj2.map((item) => {
                 return (
-                    <div key={item} className='w-1/4 bg-white p-4 flex flex-col gap-2'>
+                    <div key={item} className='w-[330px] bg-white p-4 flex flex-col  gap-4'>
                         <h1 className='font-bold text-xl'>{item.desc}</h1>
                         <img src={item.img} className='w-full h-[276px]' alt={item.img_alt} />
                         <a href="#" className='text-sky-600'>{item.link}</a>
@@ -89,10 +89,10 @@ function HomeHero() {
             })}
          </div>
 
-         <div className='w-[97%] h-[420px] gap-5 flex items-center '>
+         <div className='w-[97%] flex-wrap gap-5 flex items-center justify-center'>
             {obj3.map((item) => {
                 return (
-                    <div key={item} className='w-1/4 bg-white p-4 flex flex-col gap-2'>
+                    <div key={item} className='w-[330px] bg-white p-4 flex flex-col gap-4'>
                         <h1 className='font-bold text-xl'>{item.desc}</h1>
                         <img src={item.img} className='w-full h-[276px]' alt={item.img_alt} />
                         <a href="#" className='text-sky-600'>{item.link}</a>
