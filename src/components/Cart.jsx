@@ -5,8 +5,8 @@ import { ADD_TO_CART } from "../redux/reducer";
 
 function Cart( { name, setName } ) {
 
-  const store = useSelector(store => store.products)
-  console.log(store);
+  const store = useSelector(store => store.productCart.products);
+  console.log(store,"store");
 
 
 

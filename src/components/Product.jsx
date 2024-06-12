@@ -2,16 +2,20 @@ import React from "react";
 import { phones } from "../components/data.js";
 import isPrime from "../assets/HomeCarousel/isPrime.png";
 import ReactStars from "react-rating-stars-component";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ADD_TO_CART } from "../redux/reducer";
 // import {products} from "../redux/reducer";
 
 function Product() {
     const dispatch = useDispatch();
-    console.log(dispatch);
+
+    const {cartItems} = useSelector((state)=>state.productCart);
+    
+    console.log(cartItems, "cartItems");
+
     const handleAddToCart = (product)=>{
         dispatch(ADD_TO_CART(product))
-        console.log(products);
+        console.log(product);
    }
 
   return (
@@ -63,12 +67,22 @@ function Product() {
               <img width="50px" height={"15px"} src={isPrime} alt="" />
             </span>
             <div className="h-[80px] pt-5">
-                <button onClick={() => handleAddToCart(product)} className="cursor-pointer w-[150px] brightness-100 transition-all bg-yellow-500 text-white px-6 py-2 rounded-lg
+                {
+                product?.addtocart 
+                ?
+                (<span className="flex items-center gap-3">
+                    <span className="rounded-full w-[30px] h-[30px] bg-sky-500 text-white font-semibold flex justify-center items-center hover:cursor-pointer pb-1">-</span>
+                    <span className="w-[30px] h-[30px] flex justify-center items-center border border-black rounded-sm bg-[rgb(247,247,247)] text-black">{product?.quantity?product.quantity:"0"}</span>
+                    <span className="rounded-full w-[30px] h-[30px] bg-sky-500 text-white font-semibold flex justify-center items-center hover:cursor-pointer pb-1">+</span>
+                </span>)
+                :
+                (<button onClick={() => handleAddToCart(product)} className="cursor-pointer w-[150px] brightness-100 transition-all bg-yellow-500 text-white px-6 py-2 rounded-lg
                     border-yellow-600
                     border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
                     active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
                     Add to cart
-                </button>
+                </button>)
+                }
             </div>
           </div>
   
