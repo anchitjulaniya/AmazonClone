@@ -4,16 +4,14 @@ import isPrime from "../assets/HomeCarousel/isPrime.png";
 import ReactStars from "react-rating-stars-component";
 import { useDispatch } from "react-redux";
 import { ADD_TO_CART } from "../redux/reducer";
-import {products} from "../redux/reducer";
+// import {products} from "../redux/reducer";
 
 function Product() {
     const dispatch = useDispatch();
     console.log(dispatch);
     const handleAddToCart = (product)=>{
-        
         dispatch(ADD_TO_CART(product))
         console.log(products);
-
    }
 
   return (
