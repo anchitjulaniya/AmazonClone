@@ -1,11 +1,7 @@
 import { Carousel } from '@mantine/carousel';
 import '@mantine/carousel/styles.css';
 import { Image } from '@mantine/core';
-import { FaAngleRight } from "react-icons/fa";
-import box1_1 from '../assets/HomeCarousel/box1-1.jpg'
-import box1_2 from '../assets/HomeCarousel/box1-2.jpg'
-import box1_3 from '../assets/HomeCarousel/box1-3.jpg'
-import box1_4 from '../assets/HomeCarousel/box1-4.jpg'
+
 
 
 
