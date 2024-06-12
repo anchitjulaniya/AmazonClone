@@ -4,7 +4,7 @@ import isPrime from "../assets/HomeCarousel/isPrime.png";
 import ReactStars from "react-rating-stars-component";
 import { useDispatch } from "react-redux";
 import { ADD_TO_CART } from "../redux/reducer";
-import {products}
+import {products} from "../redux/reducer";
 
 function Product() {
     const dispatch = useDispatch();
@@ -15,7 +15,6 @@ function Product() {
         console.log(products);
 
    }
-
 
   return (
     <div className=" pl-64 flex flex-col gap-5 py-10">
@@ -74,11 +73,12 @@ function Product() {
                 </button>
             </div>
           </div>
-          {/*  */}
+  
         </div>
       ))}
-    </div> //
+    </div> 
   );
 }
+            
 
 export default Product;
