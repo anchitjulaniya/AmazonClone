@@ -8,12 +8,14 @@ import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "fireb
 import { toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate} from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
+
 
 import { auth } from "./firebase";
 
 export function SignIn() {
   const navigate = useNavigate();
-
+  const [name, setName] = useOutletContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -80,6 +82,7 @@ export function SignIn() {
         // The signed-in user info.
         const user = result.user;
         console.log(user);
+
         toast("Loggedin Sucessfully!", {
           position: "bottom-right",
           autoClose: 1800,
@@ -88,9 +91,9 @@ export function SignIn() {
           theme: "light",
           transition: Bounce,
           });
-          navigate("/");
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+          setName(user.displayName);
+          navigate(-1);
+
       })
       .catch((error) => {
         // Handle Errors here.

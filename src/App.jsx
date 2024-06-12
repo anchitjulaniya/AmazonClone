@@ -7,25 +7,27 @@ import { Outlet } from "react-router-dom"
 import { myContext } from './components/Context';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useState } from 'react';
+import {store} from './redux/store'
+import {Provider} from "react-redux"
 // import '@mantine/carousel/styles.css';
 
 
 
 function App() {
-
+  const [name, setName ] = useState(null);
   return (
   
-    // <myContext.Provider >
+    <Provider store={store}>
     <>
     <MantineProvider>
     <ToastContainer />
-      <Header />
-      <Outlet />
+      <Header name={name} setName={setName} />
+      <Outlet context = {[name,setName]} />
     </MantineProvider>  
     <Footer />
     </>
-  //  </myContext.Provider>
+   </Provider>
   )
 }
 
