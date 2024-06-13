@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
-import {phones} from '../components/data.js'
+import {allproducts} from '../components/data.js'
 
 const initialState = {
     cartItems : [],
-    phones : phones
+    allproducts : allproducts
 }
 
 const cartItemslice = createSlice({
@@ -23,9 +23,12 @@ const cartItemslice = createSlice({
                     }
                 )
             }
-            state.phones.push({...action.payload, 
-                addedtocart : true
-            })
+            const { asin } = action.payload;
+            const product = state.allproducts.find(product => product.asin == asin);
+            if (product) {
+              product.addedtocart = true;
+            }
+
         },
         REMOVE_ITEM:(state,action)=>{
             state.cartItems = state.cartItems.filter(item => item.asin !== action.payload.asin);
@@ -40,27 +43,27 @@ const cartItemslice = createSlice({
             state.cartItems = []
         },
         FILTERByAmount : (state, action)=>{
-            const filteredArray = state.phones.filter(product => product.product_price > parseFloat(action.payload.split("").filter(char => char !== ",").join("").slice(1)))
-            state.phones = filteredArray;
+            const filteredArray = state.allproducts.filter(product => product.product_price > parseFloat(action.payload.split("").filter(char => char !== ",").join("").slice(1)))
+            state.allproducts = filteredArray;
         },
         FILTERByStarRating : (state, action)=>{
-            const filteredArray = state.phones.filter(product => product.product_star_rating > parseFloat(action.payload));
-            state.phones = filteredArray;
+            const filteredArray = state.allproducts.filter(product => product.product_star_rating > parseFloat(action.payload));
+            state.allproducts = filteredArray;
         },
         FILTERByPrime : (state)=>{
-            const filteredArray = state.phones.filter(product => product.is_prime === true);
-            state.phones = filteredArray;
+            const filteredArray = state.allproducts.filter(product => product.is_prime === true);
+            state.allproducts = filteredArray;
         },FILTERByAMAZONCHOICE : (state)=>{
-            const filteredArray = state.phones.filter(product => product.is_amazon_choice === true);
-            state.phones = filteredArray;
+            const filteredArray = state.allproducts.filter(product => product.is_amazon_choice === true);
+            state.allproducts = filteredArray;
         },
         LOWTOHIGH: (state,action)=>{
-            const filteredArray = state.phones.sort((a,b) =>  a.parseFloat(action.payload.split("").filter(char => char !== ",").join("").slice(1))-b.parseFloat(action.payload.split("").filter(char => char !== ",").join("").slice(1)));
-            state.phones = filteredArray;
+            const filteredArray = state.allproducts.sort((a,b) =>  a.parseFloat(action.payload.split("").filter(char => char !== ",").join("").slice(1))-b.parseFloat(action.payload.split("").filter(char => char !== ",").join("").slice(1)));
+            state.allproducts = filteredArray;
         },
         HIGHTOLOW: (state,action)=>{
-            const filteredArray = state.phones.sort((a,b) => b.parseFloat(action.payload.split("").filter(char => char !== ",").join("").slice(1))-a.parseFloat(action.payload.split("").filter(char => char !== ",").join("").slice(1)));
-            state.phones = filteredArray;
+            const filteredArray = state.allproducts.sort((a,b) => b.parseFloat(action.payload.split("").filter(char => char !== ",").join("").slice(1))-a.parseFloat(action.payload.split("").filter(char => char !== ",").join("").slice(1)));
+            state.allproducts = filteredArray;
         },
         
 

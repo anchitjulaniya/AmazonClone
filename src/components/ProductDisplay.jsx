@@ -1,26 +1,29 @@
-import React from "react";
-import { allproducts } from "../components/data.js";
-import isPrime from "../assets/HomeCarousel/isPrime.png";
+import React, { useEffect } from 'react'
+import axios from 'axios';
+import { ADD_TO_CART } from '../redux/reducer';
 import ReactStars from "react-rating-stars-component";
-import { useDispatch, useSelector } from "react-redux";
-import { ADD_TO_CART } from "../redux/reducer";
-// import {products} from "../redux/reducer";
+import { useOutletContext } from 'react-router-dom';
+import isPrime from "../assets/HomeCarousel/isPrime.png";
+import { useDispatch } from 'react-redux';
 
-function Product() {
+
+function ProductDisplay() {
+    const [name,setName, query, setQuery, searchresult, setSearchresult] = useOutletContext();
     const dispatch = useDispatch();
-
-    const {cartItems} = useSelector((state)=>state.productCart);
-    
-    console.log(cartItems, "cartItems");
 
     const handleAddToCart = (product)=>{
         dispatch(ADD_TO_CART(product))
         console.log(product);
    }
-   console.log(allproducts)
+   console.log(Array.isArray(searchresult), "isArray");
+   console.log(searchresult);
   return (
-    <div className=" pl-64 flex flex-col gap-5 py-10">
-      {allproducts.map((product) => (
+    <div>
+        {
+            searchresult?.length == 0 ?<div className='text-center text-black text-2xl'>loading...</div>
+            :
+            <div className=" pl-64 flex flex-col gap-5 py-10">
+      {searchresult?.map((product) => (
         <div key={product.asin} className="flex items-center">
          
           <div className="w-[280px] min-w-[279px] h-[303px] flex justify-center pt-7 relative bg-[rgb(247,247,247)]">
@@ -67,9 +70,8 @@ function Product() {
               <img width="50px" height={"15px"} src={isPrime} alt="" />
             </span>
             <div className="h-[80px] pt-5">
-              {console.log(product?.addedtocart)}
                 {
-                product?.addedtocart 
+                product?.addtocart 
                 ?
                 (<span className="flex items-center gap-3">
                     <span className="rounded-full w-[30px] h-[30px] bg-sky-500 text-white font-semibold flex justify-center items-center hover:cursor-pointer pb-1">-</span>
@@ -90,8 +92,10 @@ function Product() {
         </div>
       ))}
     </div> 
-  );
+        }
+    </div>
+   
+  )
 }
-            
 
-export default Product;
+export default ProductDisplay

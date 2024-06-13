@@ -10,13 +10,20 @@ import {Link} from 'react-router-dom'
 import { getAuth, signOut } from "firebase/auth";
 import india from "../assets/india.png";
 import { toast, Bounce } from "react-toastify";
+import { amazonCategories } from "./data";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 
+function Header( {name, setName, query, setQuery, searchresult, setSearchresult, call} ) {
 
-function Header( {name, setName} ) {
- 
+  
+  const navigate = useNavigate();
+
+
     const auth = getAuth();
       const user = auth.currentUser;
+
     if (user !== null) {
       // The user object has basic properties such as display name, email, etc.
       const displayName = user.displayName;
@@ -28,6 +35,12 @@ function Header( {name, setName} ) {
       const uid = user.uid;
     }
 
+    const search = async ()=>{
+      
+      navigate('/productdisplay')
+      await call();
+
+    }
 
   const handleSignOut = ()=>{
     console.log("logout clicked");
@@ -54,49 +67,6 @@ function Header( {name, setName} ) {
     }); 
   }
 
-  const amazonCategories = [
-    "All Categories",
-    "Phones",
-    "Amazon Devices",
-    "Amazon Fashion",
-    "Amazon Fresh",
-    // "Amazon Pharmacy",
-    "Appliances",
-    "Apps & Games",
-    "Baby",
-    "Beauty",
-    "Books",
-    "Car & Motorbike",
-    // "Clothing & Accessories",
-    "Collectibles",
-    // "Computers & Accessories",
-    "Electronics",
-    "Furniture",
-    // "Garden & Outdoors",
-    "Gift Cards",
-    // "Grocery & Gourmet Foods",
-    // "Health & Personal Care",
-    "Home & Kitchen",
-    // "Industrial & Scientific",
-    "Jewellery",
-    "Kindle Store",
-    "Luggage & Bags",
-    "Luxury Beauty",
-    // "Movies & TV Shows",
-    "Music",
-    // "Musical Instruments",
-    // "Office Products",
-    "Pet Supplies",
-    "Prime Video",
-    // "Shoes & Handbags",
-    "Software",
-    // "Sports, Fitness & Outdoors",
-    // "Tools & Home Improvement",
-    "Toys & Games",
-    "Under ₹500",
-    "Video Games",
-    "Watches"
-  ];
   
 
   return (
@@ -133,9 +103,16 @@ function Header( {name, setName} ) {
             type="text"
             className="flex-grow text-black h-10 border-none px-2 outline-none"
             placeholder="Search"
+            onChange={(e) => setQuery(e.target.value)}
+            value={query}
           />
-          <button className="h-10 px-4 bg-yellow-400 text-gray-800">
+          <button
+           className="h-10 px-4 bg-yellow-400 text-gray-800"
+           onClick={search}
+           >
+
             <IoSearch className="text-white font-bold text-2xl" />
+            
           </button>
         </div>
 
@@ -180,23 +157,22 @@ function Header( {name, setName} ) {
       </div>
 
       {/* second nav */}
-      <div className="bg-[rgb(35,47,62)] text-white h-[40px] flex items-center px-4 ">
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer"><GiHamburgerMenu className="text-xl " /> All</div>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Products <FaCaretDown /></div>
+      <div className="bg-[rgb(35,47,62)] text-white h-[40px] flex items-center justify-center ">
+        <Link to="/product" className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">All Products</Link>
+        <Link className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Laptops <FaCaretDown /></Link>
         <Link to="/product" className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Mobiles</Link>
-        <Link className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Sell</Link>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Best Sellers</div>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Mobiles</div>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Today&apos;s Deal</div>
+        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Electronics</div>
+        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Home & Kitchen</div>
+        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Phones</div>
         <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Fashion</div>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Electronics</div>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Prime <FaCaretDown /></div>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Home & Kitchen</div>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">New Releases</div>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Customer Service</div>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Amazon Pay</div>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Computers</div>
-        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Books</div>
+        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Car & Motorbike</div>
+        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Today&apos;s Deal</div>
+        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Beauty Products</div>
+        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Amazon Pharmacy</div>
+        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Grocery</div>
+        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Handmade</div>
+        <div className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Games</div>
+        
         
         
         

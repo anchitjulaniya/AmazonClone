@@ -8,6 +8,7 @@ import Home from './components/Home.jsx'
 import {createBrowserRouter ,RouterProvider} from 'react-router-dom'
 import Cart from './components/Cart.jsx'
 import Product from './components/Product.jsx'
+import ProductDisplay from './components/ProductDisplay.jsx'
 // import {store} from './redux/store'
 
 const renderFunction = createBrowserRouter([
@@ -34,6 +35,10 @@ const renderFunction = createBrowserRouter([
       {
         path: '/product',
         element :<Product />
+      },
+      {
+        path: '/productdisplay',
+        element :<ProductDisplay />
       },
       
 

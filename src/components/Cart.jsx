@@ -8,15 +8,12 @@ function Cart( { name, setName } ) {
   const store = useSelector(store => store.productCart.products);
   console.log(store,"store");
 
-
-
-
   return (
     <div className="flex flex-col justify-center items-center py-6">
       <h1>
         {name ? (
           <div>
-            <p>First Login</p>
+            <p>First Login</p> 
             <Link to="/signin">Login</Link>
           </div>
         ) : (
