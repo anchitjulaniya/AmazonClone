@@ -4,7 +4,7 @@ import isPrime from "../assets/HomeCarousel/isPrime.png";
 import ReactStars from "react-rating-stars-component";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_TO_CART } from "../redux/reducer";
-// import {products} from "../redux/reducer";
+import { toast, Bounce } from 'react-toastify';
 
 function Product() {
     const dispatch = useDispatch();
@@ -15,6 +15,14 @@ function Product() {
 
     const handleAddToCart = (product)=>{
         dispatch(ADD_TO_CART(product))
+        toast("Product Added to cart", {
+          position: "bottom-right",
+          autoClose: 1800,
+          closeOnClick: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
         console.log(product);
    }
    console.log(allproducts)
@@ -28,7 +36,7 @@ function Product() {
             <img
               src={product.product_photo}
               alt="product image"
-              className="h-[217px] w-[177px]"
+              className="h-[217px] w-[177px] duration-500 hover:scale-105"
             />
             {/* </a> */}
             <span

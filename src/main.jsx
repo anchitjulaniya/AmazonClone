@@ -9,7 +9,7 @@ import {createBrowserRouter ,RouterProvider} from 'react-router-dom'
 import Cart from './components/Cart.jsx'
 import Product from './components/Product.jsx'
 import ProductDisplay from './components/ProductDisplay.jsx'
-// import {store} from './redux/store'
+import AIChatBot from './components/AIChatBot.jsx'
 
 const renderFunction = createBrowserRouter([
   {
@@ -43,6 +43,10 @@ const renderFunction = createBrowserRouter([
       
 
     ]
+  },
+  {
+    path: '/ai',
+    element : <AIChatBot />
   }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
