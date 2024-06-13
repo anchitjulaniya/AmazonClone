@@ -13,10 +13,12 @@ import { toast, Bounce } from "react-toastify";
 import { amazonCategories } from "./data";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { useSelector } from "react-redux";
 
 
 function Header( {name, setName, query, setQuery, searchresult, setSearchresult, call} ) {
 
+  const store = useSelector(store => store.productCart);
   
   const navigate = useNavigate();
 
@@ -145,13 +147,15 @@ function Header( {name, setName, query, setQuery, searchresult, setSearchresult,
         </span>
 
         <Link to='/cart'>
-        <span className="h-[90%] flex items-end border hover:border-white border-[rgb(19,25,33)] rounded-sm px-2 hover:cursor-pointer ">
-          <span className="text-[rgb(220,220,220)] text-[35px]">
+        <span className="h-[90%]  flex items-end border hover:border-white border-[rgb(19,25,33)] rounded-sm px-2 hover:cursor-pointer ">
+          <span className="text-[rgb(220,220,220)] relative text-[35px]">
             <FiShoppingCart />
+            <span className="text-[14px]  text-white bg-green-600 font-bold w-[25px] h-[25px] rounded-full flex items-center justify-center absolute -right-3 -top-2 text-[rgb(240,240,240)] font-bold">
+            {store?.cartItems.length}
           </span>
-          <span className="text-[14px] text-[rgb(240,240,240)] font-bold">
-            Cart
           </span>
+          
+          <span className="w-[30px]"></span>
         </span>
         </Link>
       </div>
