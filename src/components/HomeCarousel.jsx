@@ -1,6 +1,9 @@
 import { Carousel } from '@mantine/carousel';
 import '@mantine/carousel/styles.css';
 import { Image } from '@mantine/core';
+import classes from './Demo.module.css';
+import { rem } from '@mantine/core';
+import { IconArrowRight, IconArrowLeft } from '@tabler/icons-react';
 
 
 
@@ -20,13 +23,18 @@ const images = [HomeCarousal1,HomeCarousal2,HomeCarousal3,HomeCarousal4,HomeCaro
 
 function HomeCarousel() {
 
-  const slides = images.map((url) => (
+  return <Carousel withIndicators align="start"
+  nextControlIcon={<IconArrowRight style={{ width: rem(32), height: rem(32) }} />}
+      previousControlIcon={<IconArrowLeft style={{ width: rem(32), height: rem(32) }} />}
+
+  width="100%" controlsOffset="xl" classNames={classes} slidesToScroll={1} loop>{images.map((url) => (
     <Carousel.Slide key={url}>
       <Image width={"100%"} src={url} />
     </Carousel.Slide>
-  ));
+  ))}
 
-  return <Carousel withIndicators width="100%" controlsOffset="md" loop>{slides}
+
+
    {/* <div className='w-[97%] absolute top-[45%] left-5 border-black border-2 h-[500px]'>
     <div className='w-1/4 max-w-[337px]'>
         <h2>Revamp your home in style</h2>

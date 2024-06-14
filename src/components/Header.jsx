@@ -4,7 +4,6 @@ import { LuMapPin } from "react-icons/lu";
 import { RiEnglishInput } from "react-icons/ri";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoSearch } from "react-icons/io5";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { FaCaretDown } from "react-icons/fa";
 import {Link} from 'react-router-dom'
 import { getAuth, signOut } from "firebase/auth";
@@ -12,7 +11,6 @@ import india from "../assets/india.png";
 import { toast, Bounce } from "react-toastify";
 import { amazonCategories } from "./data";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 import { useSelector } from "react-redux";
 
 
@@ -22,12 +20,10 @@ function Header( {name, setName, query, setQuery, searchresult, setSearchresult,
   
   const navigate = useNavigate();
 
-
     const auth = getAuth();
       const user = auth.currentUser;
 
     if (user !== null) {
-      // The user object has basic properties such as display name, email, etc.
       const displayName = user.displayName;
 
       const email = user.email;
@@ -113,7 +109,6 @@ function Header( {name, setName, query, setQuery, searchresult, setSearchresult,
            className="h-10 px-4 bg-yellow-400 text-gray-800"
            onClick={search}
            >
-
             <IoSearch className="text-white font-bold text-2xl" />
             
           </button>
@@ -151,7 +146,7 @@ function Header( {name, setName, query, setQuery, searchresult, setSearchresult,
         <span className="h-[90%]  flex items-end border hover:border-white border-[rgb(19,25,33)] rounded-sm px-2 hover:cursor-pointer ">
           <span className="text-[rgb(220,220,220)] relative text-[35px]">
             <FiShoppingCart />
-            <span className="text-[14px]  text-white bg-green-600 font-bold w-[25px] h-[25px] rounded-full flex items-center justify-center absolute -right-3 -top-2 text-[rgb(240,240,240)] font-bold">
+            <span className={`${store?.cartItems.length>0 ? "" : "hidden "} text-[14px] text-white bg-green-600 font-bold w-[25px] h-[25px] rounded-full flex items-center justify-center absolute -right-3 -top-2 text-[rgb(240,240,240)] font-bold`}>
             {store?.cartItems.length}
           </span>
           </span>
@@ -164,18 +159,15 @@ function Header( {name, setName, query, setQuery, searchresult, setSearchresult,
       {/* second nav */}
       <div className="bg-[rgb(35,47,62)] text-white h-[40px] flex items-center justify-center ">
         <Link to="/product" className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">All Products</Link>
-        
         <Link to='/product/laptops' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Laptops <FaCaretDown /></Link>
-
         <Link to='/product/phones' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Mobiles</Link>
-
         <Link to='/product/electronics' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Electronics</Link>
-        <Link to='/product/homeandkitchen' onClick={()=>{setSelectedPage("homeandkitchen")}} className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Home & Kitchen</Link>
+        <Link to='/product/homeandkitchen' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Home & Kitchen</Link>
         <Link to='/product/phones' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Phones</Link>
         <Link to='/product/fashion' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Fashion</Link>
         <Link to='/product/carandmotorbike' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Car & Motorbike</Link>
         <Link to='/product/todaysdeal' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  flex items-center gap-1 hover:cursor-pointer">Today&apos;s Deal</Link>
-        <Link to='/product/beautyproducts' onClick={()=>{setSelectedPage("beautyproducts")}} className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Beauty Products</Link>
+        <Link to='/product/beautyproducts' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Beauty Products</Link>
         <Link to='/product/amazonpharmacy' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Amazon Pharmacy</Link>
         <Link to='/product/groceryandgourmetfood' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Grocery</Link>
         <Link to='/product/handmade' className=" h-[90%] px-2 text-[15px] border border-[rgb(35,47,62)]  hover:border-white  lg:flex items-center gap-1 hover:cursor-pointer hidden">Handmade</Link>
