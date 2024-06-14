@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 
 
 function ProductDisplay() {
-    const [name,setName, query, setQuery, searchresult, setSearchresult] = useOutletContext();
+    const [name, setName, query, setQuery, searchresult, setSearchresult, id, setId] = useOutletContext();
     const dispatch = useDispatch();
 
     const handleAddToCart = (product)=>{

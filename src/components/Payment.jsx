@@ -35,7 +35,7 @@ const Payment = ({total}) => {
       key: "rzp_test_uCnekcWoULOoWb", // Replace with your Razorpay key ID
       amount: total * 100, // Razorpay requires the amount in paise (smallest currency unit)
       currency: "INR",
-      name: "EatsExpress",
+      name: "Amazon.in",
       description: "Test Transaction",
       image: "https://example.com/your_logo",
       handler: (response) => {

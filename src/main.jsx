@@ -34,7 +34,16 @@ const renderFunction = createBrowserRouter([
       },
       {
         path: '/product',
-        element :<Product />
+        children : [
+          {
+            index: true,
+            element:<Product />
+          },
+          {
+            path : ':selectedPage',
+            element: <Product />
+          }
+        ]
       },
       {
         path: '/productdisplay',

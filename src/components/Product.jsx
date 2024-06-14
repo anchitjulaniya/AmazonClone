@@ -1,20 +1,31 @@
-import React from "react";
-import { allproducts } from "../components/data.js";
+import React, { useEffect } from "react";
+import { productObject, allproducts } from "../components/data.js";
 import isPrime from "../assets/HomeCarousel/isPrime.png";
 import ReactStars from "react-rating-stars-component";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_TO_CART } from "../redux/reducer";
 import { toast, Bounce } from 'react-toastify';
+import Sidebar from "./Sidebar.jsx";
+import { useParams } from "react-router-dom";
 
 function Product() {
+    let { selectedPage } = useParams(); 
+    
+
+      if(!selectedPage){
+        productObject[selectedPage] = allproducts
+      }
+    
+
     const dispatch = useDispatch();
 
     const {cartItems} = useSelector((state)=>state.productCart);
     
     console.log(cartItems, "cartItems");
-
+  
     const handleAddToCart = (product)=>{
         dispatch(ADD_TO_CART(product))
+       
         toast("Product Added to cart", {
           position: "bottom-right",
           autoClose: 1800,
@@ -23,12 +34,18 @@ function Product() {
           theme: "light",
           transition: Bounce,
           });
-        console.log(product);
+          console.log(product);
    }
-   console.log(allproducts)
+   console.log(productObject[selectedPage])
   return (
-    <div className=" pl-64 flex flex-col gap-5 py-10">
-      {allproducts.map((product) => (
+   <div className="flex ">
+    
+    <Sidebar /> 
+
+
+    {/* -------------- */}
+    <div className=" pl-20 flex flex-col gap-5 py-10">
+      {productObject[selectedPage].map((product) => (
         <div key={product.asin} className="flex items-center">
          
           <div className="w-[280px] min-w-[279px] h-[303px] flex justify-center pt-7 relative bg-[rgb(247,247,247)]">
@@ -98,7 +115,8 @@ function Product() {
         </div>
       ))}
     </div> 
-  );
+   </div> 
+  )
 }
             
 

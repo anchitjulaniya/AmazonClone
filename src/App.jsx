@@ -13,6 +13,7 @@ import {Provider} from "react-redux"
 import axios from 'axios';
 
 function App() {
+ 
   const [name, setName ] = useState(null);
   const [query, setQuery] = useState("");
   const [searchresult, setSearchresult] = useState([]);
@@ -53,8 +54,8 @@ function App() {
     <>
     <MantineProvider>
     <ToastContainer />
-      <Header name={name} setName={setName} query={query} setQuery={setQuery} searchresult={searchresult} setSearchresult={setSearchresult} call = {call}/>
-      <Outlet context = {[name, setName, query, setQuery, searchresult, setSearchresult]} />
+      <Header name={name} setName={setName} query={query} setQuery={setQuery} searchresult={searchresult} setSearchresult={setSearchresult} call = {call} />
+      <Outlet context = {[name, setName, query, setQuery, searchresult, setSearchresult ]} />
     </MantineProvider>  
     <Footer />
     </>
