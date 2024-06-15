@@ -192,5 +192,5 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For any questions or feedback, please reach out to [anchitjulaniyaofficial@gmail.com].
+For any questions or feedback, please reach out to [anchitjulaniyaofficial@gmail.com](mailto:anchitjulaniyaofficial@example.com).
 
