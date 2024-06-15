@@ -42,7 +42,7 @@ function App() {
       console.log("API response data:", response.data.data.products); // Log the API data
 
       setSearchresult(response.data.data.products); //updating the search result state
-
+      setQuery("");
     } catch (error) {
       console.error("Error fetching data:", error);
     }
