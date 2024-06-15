@@ -4,6 +4,11 @@
 
 This project is an Amazon Clone built using React and Firebase, integrating the Razorpay payment gateway. The platform utilizes the Amazon Product Data API for product listings. The project involves collaboration using GitHub.
 
+![Home](./src/assets/Readme/Home.png)
+![Home](./src/assets/Readme/Home2.png)
+![Home](./src/assets/Readme/Home3.png)
+
+
 ## Features
 
 - **User Authentication**: Sign up and login functionality using Firebase Authentication.
@@ -13,6 +18,8 @@ This project is an Amazon Clone built using React and Firebase, integrating the 
 - **Order History**: View past orders and purchase history.
 - **Responsive Design**: Mobile-first responsive design using CSS and React.
 
+
+
 ## Tech Stack
 
 - **Frontend**: React, CSS, HTML
@@ -20,6 +27,9 @@ This project is an Amazon Clone built using React and Firebase, integrating the 
 - **Payment Gateway**: Razorpay
 - **External API**: Amazon Product Data API
 - **Collaboration**: GitHub
+
+![Search](./src/assets/Readme/ProductusingSearch.png)
+
 
 ## Getting Started
 
@@ -31,6 +41,9 @@ This project is an Amazon Clone built using React and Firebase, integrating the 
 - Razorpay account
 - Amazon Product Advertising API credentials
 - GitHub account
+
+![Product](./src/assets/Readme/Products.png)
+
 
 ### Installation
 
@@ -59,6 +72,11 @@ This project is an Amazon Clone built using React and Firebase, integrating the 
       REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
       REACT_APP_FIREBASE_APP_ID=your_app_id
       ```
+![SignIn](./src/assets/Readme/loginpage.png)
+
+
+![Cart](./src/assets/Readme/cart1.png)
+![cart](./src/assets/Readme/cart2.png)
 
 4. **Razorpay Configuration**:
     - Create a Razorpay account and get your API keys.
@@ -67,6 +85,9 @@ This project is an Amazon Clone built using React and Firebase, integrating the 
       REACT_APP_RAZORPAY_KEY_ID=your_razorpay_key_id
       REACT_APP_RAZORPAY_KEY_SECRET=your_razorpay_key_secret
       ```
+
+      ![RazorPay](./src/assets/Readme/razorpayGateway.png)
+
 
 5. **Amazon Product Data API Configuration**:
     - Sign up for the Amazon Product Advertising API and get your credentials.
