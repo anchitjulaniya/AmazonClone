@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 
-const Sidebar = () => {
+const Sidebar = ({ onSortChange }) => {
   const [sortOption, setSortOption] = useState('');
 
   const handleSortChange = (event) => {
-    setSortOption(event.target.value);
-    // Handle sorting logic based on the selected option here
-    console.log('Selected Sort Option:', event.target.value);
+    const selectedOption = event.target.value;
+    setSortOption(selectedOption);
+    onSortChange(selectedOption);
   };
 
   return (
     <div className='' style={styles.sidebar}>
-
       <h2 className="font-bold text-xl">Sort Options</h2>
       <select value={sortOption} onChange={handleSortChange} className='border-black border rounded-lg outline-none' style={styles.select}>
         <option value="featured">Featured</option>
@@ -37,4 +36,3 @@ const styles = {
 };
 
 export default Sidebar;
-

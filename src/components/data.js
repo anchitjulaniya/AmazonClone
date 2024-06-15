@@ -1075,27 +1075,6 @@ export const allproducts = [
     delivery: null,
   },
   {
-    asin: "B0BZCR6TNK",
-    product_title:
-      "Samsung Galaxy M14 5G (ICY Silver,6GB,128GB)|50MP Triple Cam|Segment&#x27;s Only 6000 mAh 5G SP|5nm Processor|2 Gen. OS Upgrade &amp; 4 Year Security Update|12GB RAM with RAM Plus|Android 13|Without Charger",
-    product_price: "₹12,490",
-    product_original_price: "₹18,990",
-    currency: "INR",
-    product_star_rating: "4",
-    product_num_ratings: 23842,
-    product_url: "https://www.amazon.in/dp/B0BZCR6TNK",
-    product_photo:
-      "https://m.media-amazon.com/images/I/81ZSn2rk9WL._AC_SX444_SY639_FMwebp_QL65_.jpg",
-    product_num_offers: 1,
-    product_minimum_offer_price: "₹12,490",
-    is_best_seller: false,
-    is_amazon_choice: false,
-    is_prime: false,
-    climate_pledge_friendly: false,
-    sales_volume: "5K+ bought in past month",
-    delivery: null,
-  },
-  {
     asin: "B0B9YK24TF",
     product_title:
       "Nokia 2660 Flip 4G Volte keypad Phone with Dual SIM, Dual Screen, inbuilt MP3 Player &amp; Wireless FM Radio | Black",
@@ -2034,27 +2013,6 @@ export const allproducts = [
     is_prime: false,
     climate_pledge_friendly: false,
     sales_volume: "500+ bought in past month",
-    delivery: null,
-  },
-  {
-    asin: "B0BZCR6TNK",
-    product_title:
-      "Samsung Galaxy M14 5G (ICY Silver,6GB,128GB)|50MP Triple Cam|Segment&#x27;s Only 6000 mAh 5G SP|5nm Processor|2 Gen. OS Upgrade &amp; 4 Year Security Update|12GB RAM with RAM Plus|Android 13|Without Charger",
-    product_price: "₹12,490",
-    product_original_price: "₹18,990",
-    currency: "INR",
-    product_star_rating: "4",
-    product_num_ratings: 23842,
-    product_url: "https://www.amazon.in/dp/B0BZCR6TNK",
-    product_photo:
-      "https://m.media-amazon.com/images/I/81ZSn2rk9WL._AC_SX444_SY639_FMwebp_QL65_.jpg",
-    product_num_offers: 1,
-    product_minimum_offer_price: "₹12,490",
-    is_best_seller: false,
-    is_amazon_choice: false,
-    is_prime: true,
-    climate_pledge_friendly: false,
-    sales_volume: "5K+ bought in past month",
     delivery: null,
   },
   {
@@ -3836,7 +3794,7 @@ export const allproducts = [
     asin: "B0C5HNSN45",
     product_title:
       "UTCIAD - Up The Cherries In All Departments - AFC Bournemouth Podcast",
-    product_price: "₹0",
+    product_price: "₹10000",
     product_original_price: null,
     currency: "INR",
     product_star_rating: null,
@@ -3845,7 +3803,7 @@ export const allproducts = [
     product_photo:
       "https://m.media-amazon.com/images/I/611f2ZcKUxL._AC_SX444_SY639_FMwebp_QL65_.jpg",
     product_num_offers: 1,
-    product_minimum_offer_price: "₹0",
+    product_minimum_offer_price: "₹10000",
     is_best_seller: false,
     is_amazon_choice: false,
     is_prime: false,
@@ -3918,7 +3876,7 @@ export const allproducts = [
     asin: "B07BKTP32V",
     product_title:
       "God Made You: Children&#x27;s Catholic Book for Girls (Catholic Gifts in All Departments for Baptism First Communion for Girls 1)",
-    product_price: "₹0",
+    product_price: "₹10000",
     product_original_price: null,
     currency: "INR",
     product_star_rating: "5",
@@ -3927,7 +3885,7 @@ export const allproducts = [
     product_photo:
       "https://m.media-amazon.com/images/I/81h6Bt6mIVL._AC_SX444_SY639_FMwebp_QL65_.jpg",
     product_num_offers: 1,
-    product_minimum_offer_price: "₹0",
+    product_minimum_offer_price: "₹10000",
     is_best_seller: false,
     is_amazon_choice: false,
     is_prime: false,
@@ -5675,27 +5633,6 @@ export const productObject = {
       delivery: null,
     },
     {
-      asin: "B0BZCR6TNK",
-      product_title:
-        "Samsung Galaxy M14 5G (ICY Silver,6GB,128GB)|50MP Triple Cam|Segment&#x27;s Only 6000 mAh 5G SP|5nm Processor|2 Gen. OS Upgrade &amp; 4 Year Security Update|12GB RAM with RAM Plus|Android 13|Without Charger",
-      product_price: "₹12,490",
-      product_original_price: "₹18,990",
-      currency: "INR",
-      product_star_rating: "4",
-      product_num_ratings: 23842,
-      product_url: "https://www.amazon.in/dp/B0BZCR6TNK",
-      product_photo:
-        "https://m.media-amazon.com/images/I/81ZSn2rk9WL._AC_SX444_SY639_FMwebp_QL65_.jpg",
-      product_num_offers: 1,
-      product_minimum_offer_price: "₹12,490",
-      is_best_seller: false,
-      is_amazon_choice: false,
-      is_prime: false,
-      climate_pledge_friendly: false,
-      sales_volume: "5K+ bought in past month",
-      delivery: null,
-    },
-    {
       asin: "B0B9YK24TF",
       product_title:
         "Nokia 2660 Flip 4G Volte keypad Phone with Dual SIM, Dual Screen, inbuilt MP3 Player &amp; Wireless FM Radio | Black",
@@ -6636,27 +6573,6 @@ export const productObject = {
       is_prime: false,
       climate_pledge_friendly: false,
       sales_volume: "500+ bought in past month",
-      delivery: null,
-    },
-    {
-      asin: "B0BZCR6TNK",
-      product_title:
-        "Samsung Galaxy M14 5G (ICY Silver,6GB,128GB)|50MP Triple Cam|Segment&#x27;s Only 6000 mAh 5G SP|5nm Processor|2 Gen. OS Upgrade &amp; 4 Year Security Update|12GB RAM with RAM Plus|Android 13|Without Charger",
-      product_price: "₹12,490",
-      product_original_price: "₹18,990",
-      currency: "INR",
-      product_star_rating: "4",
-      product_num_ratings: 23842,
-      product_url: "https://www.amazon.in/dp/B0BZCR6TNK",
-      product_photo:
-        "https://m.media-amazon.com/images/I/81ZSn2rk9WL._AC_SX444_SY639_FMwebp_QL65_.jpg",
-      product_num_offers: 1,
-      product_minimum_offer_price: "₹12,490",
-      is_best_seller: false,
-      is_amazon_choice: false,
-      is_prime: true,
-      climate_pledge_friendly: false,
-      sales_volume: "5K+ bought in past month",
       delivery: null,
     },
     {
@@ -9039,7 +8955,7 @@ export const productObject = {
       asin: "B0C5HNSN45",
       product_title:
         "UTCIAD - Up The Cherries In All Departments - AFC Bournemouth Podcast",
-      product_price: "₹0",
+      product_price: "₹10000",
       product_original_price: null,
       currency: "INR",
       product_star_rating: null,
@@ -9048,7 +8964,7 @@ export const productObject = {
       product_photo:
         "https://m.media-amazon.com/images/I/611f2ZcKUxL._AC_SX444_SY639_FMwebp_QL65_.jpg",
       product_num_offers: 1,
-      product_minimum_offer_price: "₹0",
+      product_minimum_offer_price: "₹10000",
       is_best_seller: false,
       is_amazon_choice: false,
       is_prime: false,
@@ -9121,7 +9037,7 @@ export const productObject = {
       asin: "B07BKTP32V",
       product_title:
         "God Made You: Children&#x27;s Catholic Book for Girls (Catholic Gifts in All Departments for Baptism First Communion for Girls 1)",
-      product_price: "₹0",
+      product_price: "₹10000",
       product_original_price: null,
       currency: "INR",
       product_star_rating: "5",
@@ -9130,7 +9046,7 @@ export const productObject = {
       product_photo:
         "https://m.media-amazon.com/images/I/81h6Bt6mIVL._AC_SX444_SY639_FMwebp_QL65_.jpg",
       product_num_offers: 1,
-      product_minimum_offer_price: "₹0",
+      product_minimum_offer_price: "₹10000",
       is_best_seller: false,
       is_amazon_choice: false,
       is_prime: false,
@@ -11482,27 +11398,6 @@ export const phones = [
     is_prime: false,
     climate_pledge_friendly: false,
     sales_volume: "2K+ bought in past month",
-    delivery: null,
-  },
-  {
-    asin: "B0BZCR6TNK",
-    product_title:
-      "Samsung Galaxy M14 5G (ICY Silver,6GB,128GB)|50MP Triple Cam|Segment&#x27;s Only 6000 mAh 5G SP|5nm Processor|2 Gen. OS Upgrade &amp; 4 Year Security Update|12GB RAM with RAM Plus|Android 13|Without Charger",
-    product_price: "₹12,490",
-    product_original_price: "₹18,990",
-    currency: "INR",
-    product_star_rating: "4",
-    product_num_ratings: 23842,
-    product_url: "https://www.amazon.in/dp/B0BZCR6TNK",
-    product_photo:
-      "https://m.media-amazon.com/images/I/81ZSn2rk9WL._AC_SX444_SY639_FMwebp_QL65_.jpg",
-    product_num_offers: 1,
-    product_minimum_offer_price: "₹12,490",
-    is_best_seller: false,
-    is_amazon_choice: false,
-    is_prime: false,
-    climate_pledge_friendly: false,
-    sales_volume: "5K+ bought in past month",
     delivery: null,
   },
   {
@@ -14854,7 +14749,7 @@ export const alldepartment = [
     asin: "B0C5HNSN45",
     product_title:
       "UTCIAD - Up The Cherries In All Departments - AFC Bournemouth Podcast",
-    product_price: "₹0",
+    product_price: "₹10000",
     product_original_price: null,
     currency: "INR",
     product_star_rating: null,
@@ -14863,7 +14758,7 @@ export const alldepartment = [
     product_photo:
       "https://m.media-amazon.com/images/I/611f2ZcKUxL._AC_SX444_SY639_FMwebp_QL65_.jpg",
     product_num_offers: 1,
-    product_minimum_offer_price: "₹0",
+    product_minimum_offer_price: "₹10000",
     is_best_seller: false,
     is_amazon_choice: false,
     is_prime: false,
@@ -14936,7 +14831,7 @@ export const alldepartment = [
     asin: "B07BKTP32V",
     product_title:
       "God Made You: Children&#x27;s Catholic Book for Girls (Catholic Gifts in All Departments for Baptism First Communion for Girls 1)",
-    product_price: "₹0",
+    product_price: "₹10000",
     product_original_price: null,
     currency: "INR",
     product_star_rating: "5",
@@ -14945,7 +14840,7 @@ export const alldepartment = [
     product_photo:
       "https://m.media-amazon.com/images/I/81h6Bt6mIVL._AC_SX444_SY639_FMwebp_QL65_.jpg",
     product_num_offers: 1,
-    product_minimum_offer_price: "₹0",
+    product_minimum_offer_price: "₹10000",
     is_best_seller: false,
     is_amazon_choice: false,
     is_prime: false,
