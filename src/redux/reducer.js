@@ -29,6 +29,7 @@ const cartItemslice = createSlice({
         REMOVE_ITEM: (state, action) => {
             state.cartItems = state.cartItems.filter(item => item.asin !== action.payload.asin);
         },
+        
         DECREMENT: (state, action) => {
             const itemIndex = state.cartItems.findIndex(item => item.asin === action.payload.asin);
             if (itemIndex >= 0) {

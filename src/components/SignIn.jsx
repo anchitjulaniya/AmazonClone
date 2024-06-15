@@ -9,15 +9,18 @@ import { toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate} from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
-
-
 import { auth } from "./firebase";
+import { myContext } from "./Context";
+
 
 export function SignIn() {
   const navigate = useNavigate();
   const [name, setName] = useOutletContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+
+  const [userEmail,  setUseremail] = useContext(myContext);
 
   const handleToast = () => {
     toast("hello", {
@@ -42,6 +45,7 @@ export function SignIn() {
         // Signed in
         const user = userCredential.user;
         console.log(user);
+        setUseremail(user.email);
         toast("Loggedin Sucessfully!", {
           position: "bottom-right",
           autoClose: 1800,
@@ -82,7 +86,7 @@ export function SignIn() {
         // The signed-in user info.
         const user = result.user;
         console.log(user);
-
+        setUseremail(user.email);
         toast("Loggedin Sucessfully!", {
           position: "bottom-right",
           autoClose: 1800,
@@ -124,7 +128,8 @@ export function SignIn() {
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential.accessToken;
-        console.log("Facebook Login done");
+        console.log("Facebook Login done",accessToken.email);
+        setUseremail(accessToken.email);
         toast("Facebook Login done", {
           position: "bottom-right",
           autoClose: 1800,

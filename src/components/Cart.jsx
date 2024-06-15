@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { ADD_TO_CART } from "../redux/reducer";
+import { ADD_TO_CART, DECREMENT,REMOVE_ITEM } from "../redux/reducer";
 import ReactStars from "react-rating-stars-component";
 import isPrime from "../assets/HomeCarousel/isPrime.png";
 import Payment from "./Payment";
@@ -18,21 +17,25 @@ function Cart({ name, setName }) {
   const handleAddQuantity = (product) => {
     dispatch({ type: ADD_TO_CART, payload: { ...product, quantity: product.quantity + 1 } });
   };
-
+  const handleRemove = (product)=>{
+    dispatch({type: REMOVE_ITEM, payload:{...product}})
+  }
   const handleReduceQuantity = (product) => {
+    if(product.quantity === 1){
+      dispatch({type:REMOVE_ITEM, payload : {...product   }})
+    }
     if (product.quantity > 1) {
-      dispatch({ type: ADD_TO_CART, payload: { ...product, quantity: product.quantity - 1 } });
+      dispatch({ type: DECREMENT, payload: { ...product, quantity: product.quantity - 1 } });
     }
   };
+
   useEffect(() => {
     let x = store.cartItems.reduce((total, item) => {
       return total + item.quantity * parseFloat(item.product_price.replace(/[^0-9.-]+/g, ""));
     }, 0);
     setTotal(x);
   }, [store.cartItems, setTotal]);
-  // const handleRemove = (asin) => {
-  //   dispatch({ type: REMOVE_FROM_CART, payload: { asin } });
-  // };
+
 
   return (
     <div className="flex flex-col justify-center items-center py-6">
@@ -101,7 +104,7 @@ function Cart({ name, setName }) {
                   </span>
                 </span>
                 <span 
-                  // onClick={() => handleRemove(product.asin)}
+                  onClick={() => handleRemove(product)}
                   className="text-red-400 duration-500 hover:scale-105 hover:cursor-pointer hover:text-red-600"
                 >
                   Remove

@@ -4,14 +4,20 @@ import { useNavigate} from "react-router-dom";
 import loadRazorpayScript from "../components/RazorPay.js";
 import PropTypes from "prop-types";
 import { useDispatch, } from "react-redux";
+import React, { useContext } from 'react';
+import { myContext } from "./Context.js";
 // import { MAKE_CART_EMPTY } from "../store/Reducers";
 
 const Payment = ({total}) => {
 //   const navigate = useNavigate()
 //   const dispatch = useDispatch();
+const [userEmail, setUseremail] = useContext(myContext);
 
   const handlePayment = async (total) => {
-
+    if(userEmail === null){
+      alert("Please Login First")
+      return ;
+    }
     // if(!total || !name || !address || !contact){
     //   toast.error("Please fill all the details", {
     //     position: "bottom-right",

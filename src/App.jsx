@@ -1,7 +1,6 @@
 
 import Footer from './Footer';
 import Header from './components/Header'
-import HomeCarousel from './components/HomeCarousel'
 import { MantineProvider } from '@mantine/core';
 import { Outlet } from "react-router-dom"
 import { myContext } from './components/Context';
@@ -12,12 +11,13 @@ import {store} from './redux/store'
 import {Provider} from "react-redux"
 import axios from 'axios';
 
+
 function App() {
- 
+  const [userEmail, setUseremail] = useState(null);
   const [name, setName ] = useState(null);
   const [query, setQuery] = useState("");
   const [searchresult, setSearchresult] = useState([]);
-
+  
   const call = async () => {
     console.log("Call function invoked with query:", query); // Log when call is invoked
     const options = {
@@ -49,7 +49,7 @@ function App() {
   };
 
   return (
-  
+  <myContext.Provider value={[userEmail, setUseremail]}>
     <Provider store={store}>
     <>
     <MantineProvider>
@@ -60,6 +60,7 @@ function App() {
     <Footer />
     </>
    </Provider>
+   </myContext.Provider>
   )
 }
 
