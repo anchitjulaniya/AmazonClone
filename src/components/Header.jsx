@@ -11,7 +11,8 @@ import india from "../assets/india.png";
 import { toast, Bounce } from "react-toastify";
 import { amazonCategories } from "./data";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { CLEAR_CART } from "../redux/reducer";
 
 
 function Header( {name, setName, query, setQuery, searchresult, setSearchresult, call } ) {
@@ -19,7 +20,7 @@ function Header( {name, setName, query, setQuery, searchresult, setSearchresult,
   const store = useSelector(store => store.productCart);
   
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
     const auth = getAuth();
       const user = auth.currentUser;
 
@@ -52,6 +53,7 @@ function Header( {name, setName, query, setQuery, searchresult, setSearchresult,
         transition: Bounce,
       })
       setName(null);
+      dispatch({type:CLEAR_CART})
 
     }).catch((error) => {
       // An error happened.

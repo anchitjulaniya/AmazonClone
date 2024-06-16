@@ -11,7 +11,9 @@ function Cart({ name, setName }) {
   const [total, setTotal] = React.useState(0);
 
   const dispatch = useDispatch();
+
   const store = useSelector(store => store.productCart);
+
   console.log(store, "store");
 
   const handleAddQuantity = (product) => {
@@ -124,7 +126,7 @@ function Cart({ name, setName }) {
         </div>)}
       </div>
       <div className={`${total > 0 ? "" : "hidden"}`}>
-      <Payment total={total} />
+      <Payment   total={total} />
       </div>
     </div>
   );

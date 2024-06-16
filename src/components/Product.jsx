@@ -48,14 +48,18 @@ function Product() {
 
   const handleAddToCart = (product) => {
     dispatch(ADD_TO_CART(product));
-    toast("Product Added to cart", {
+    // toast("Product Added to cart", {
+    //   position: "bottom-right",
+    //   autoClose: 1800,
+    //   closeOnClick: true,
+    //   progress: undefined,
+    //   theme: "light",
+    //   transition: Bounce,
+    // });
+    toast.success("Product Added to cart!", {
       position: "bottom-right",
-      autoClose: 1800,
-      closeOnClick: true,
-      progress: undefined,
-      theme: "light",
-      transition: Bounce,
-    });
+      theme: "colored",
+    })
   };
 
   return (

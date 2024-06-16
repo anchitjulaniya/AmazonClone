@@ -8,14 +8,19 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-
 import { auth } from "./firebase";
+import { useNavigate } from "react-router-dom";
 
 export function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
-
+  const navigate = useNavigate();
+  
+  const [userEmail,  setUseremail] = useContext(myContext);
+  if(userEmail !== null){
+    navigate('/');
+  }
   const handleSignUpClick = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {

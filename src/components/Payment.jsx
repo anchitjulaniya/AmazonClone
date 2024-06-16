@@ -3,19 +3,26 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate} from "react-router-dom";
 import loadRazorpayScript from "../components/RazorPay.js";
 import PropTypes from "prop-types";
+import { CLEAR_CART } from "../redux/reducer.js";
 import { useDispatch, } from "react-redux";
 import React, { useContext } from 'react';
 import { myContext } from "./Context.js";
+import logo from "../assets/HomeCarousel/amazonin.svg";
 // import { MAKE_CART_EMPTY } from "../store/Reducers";
 
-const Payment = ({total}) => {
+const Payment = ({ total}) => {
+const navigate = useNavigate();
 //   const navigate = useNavigate()
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 const [userEmail, setUseremail] = useContext(myContext);
 
   const handlePayment = async (total) => {
     if(userEmail === null){
-      alert("Please Login First")
+      navigate('/signin')
+      toast.error("Login First!", {
+        position: "bottom-right",
+        theme: "colored",
+      });
       return ;
     }
     // if(!total || !name || !address || !contact){
@@ -24,7 +31,7 @@ const [userEmail, setUseremail] = useContext(myContext);
     //     theme: "colored",
     //   });
     //   return;
-    // // }
+    // }
     const res = await loadRazorpayScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
@@ -43,18 +50,18 @@ const [userEmail, setUseremail] = useContext(myContext);
       currency: "INR",
       name: "Amazon.in",
       description: "Test Transaction",
-      image: "https://example.com/your_logo",
+      image: {logo},
       handler: (response) => {
+        dispatch({type:CLEAR_CART})
         toast.success("Payment Successful!", {
           position: "bottom-right",
           theme: "colored",
-        });
-        console.log(response);
-
-        // Further process the response here (e.g., store it in a state or send to your server for verification)
+        })
+        console.log(response); // {razorpay_payment_id:"pay_ONOmIIDgEshfBM"}
+        
       },
       prefill: {
-        name: "Anchit Julaniya",
+        name: "Amitabh Bachchan",
         email: "email@example.com",
         contact: 123456789,
       },

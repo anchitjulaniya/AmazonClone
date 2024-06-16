@@ -6,6 +6,7 @@ import { useOutletContext } from "react-router-dom";
 import isPrime from "../assets/HomeCarousel/isPrime.png";
 import { useDispatch } from "react-redux";
 import { BallTriangle } from "react-loader-spinner";
+import { toast } from "react-toastify";
 
 function ProductDisplay() {
   const [
@@ -22,6 +23,10 @@ function ProductDisplay() {
 
   const handleAddToCart = (product) => {
     dispatch(ADD_TO_CART(product));
+    toast.success("Product Added to cart!", {
+      position: "bottom-right",
+      theme: "colored",
+    })
     console.log(product);
   };
   console.log(Array.isArray(searchresult), "isArray");

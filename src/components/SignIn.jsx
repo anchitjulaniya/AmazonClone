@@ -12,15 +12,20 @@ import { useOutletContext } from "react-router-dom";
 import { auth } from "./firebase";
 import { myContext } from "./Context";
 
-
 export function SignIn() {
   const navigate = useNavigate();
+  
   const [name, setName] = useOutletContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
   const [userEmail,  setUseremail] = useContext(myContext);
+
+  if(userEmail){
+    console.log(userEmail);
+    navigate('/');
+  }
+
 
   const handleToast = () => {
     toast("hello", {
