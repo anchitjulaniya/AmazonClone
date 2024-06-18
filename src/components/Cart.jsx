@@ -40,11 +40,15 @@ function Cart({ name, setName }) {
 
 
   return (
-    <div className="flex flex-col justify-center items-center py-6">
+
+<>
+<h1 className="text-black text-2xl font-semibold text-center">Shopping Cart</h1>
+
+    <div className="flex flex-col justify-center items-center py-6  overflow-x-auto">
   
-      <h1 className="text-black text-2xl font-semibold">Shopping Cart</h1>
+  
       {store?.cartItems?.length === 0 && <img src={emptycart} alt="cart" />}
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start  overflow-x-auto">
         {store?.cartItems?.map((product) => (
           <div key={product.asin} className="flex items-center">
             <div className="w-[280px] min-w-[279px] h-[303px] flex justify-center pt-7 relative">
@@ -125,10 +129,12 @@ function Cart({ name, setName }) {
 
         </div>)}
       </div>
-      <div className={`${total > 0 ? "" : "hidden"}`}>
+      
+    </div>
+    <div className={`${total > 0 ? "" : "hidden"} flex justify-center `}>
       <Payment   total={total} />
       </div>
-    </div>
+    </>    
   );
 }
 

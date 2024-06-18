@@ -149,7 +149,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center h-[130px] px-10">
+      <div className="flex flex-col md:flex-row justify-between items-center md:h-[130px] px-10 py-5">
 
         <div className="card">
           <a
@@ -210,10 +210,10 @@ function Footer() {
               </button>
               <span
                 className="absolute -top-14 left-[50%] -translate-x-[50%] 
-  z-20 origin-left scale-0 px-3 rounded-lg border 
-  border-gray-300 bg-white py-2 text-sm font-bold
-  shadow-md transition-all duration-300 ease-in-out 
-  group-hover:scale-100"
+                  z-20 origin-left scale-0 px-3 rounded-lg border 
+                  border-gray-300 bg-white py-2 text-sm font-bold
+                  shadow-md transition-all duration-300 ease-in-out 
+                  group-hover:scale-100"
               >
                 GitHub<span></span>
               </span>

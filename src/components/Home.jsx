@@ -6,7 +6,7 @@ import HomeHero from './HomeHero'
 function Home() {
   return (
     <>
-        <HomeCarousel  />
+        <HomeCarousel className=""  />
         <HomeHero />
     </>
   )

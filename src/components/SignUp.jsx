@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import logo from "../assets/HomeCarousel/amazonin.svg";
 import { Link } from "react-router-dom";
+import { toast, Bounce } from 'react-toastify';
 import { myContext } from "./Context";
 import {
   signInWithPopup,
@@ -18,21 +19,34 @@ export function SignUp() {
   const navigate = useNavigate();
   
   const [userEmail,  setUseremail] = useContext(myContext);
+  
   if(userEmail !== null){
     navigate('/');
   }
+
+
   const handleSignUpClick = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
         console.log(user);
+        toast.success("Account Created Successfully!", {
+          position: "bottom-right",
+          theme: "colored",
+        })
+        navigate("/signin")
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
+
+        toast.error(errorMessage, {
+          position: "bottom-right",
+          theme: "colored",
+        })
       });
   };
 

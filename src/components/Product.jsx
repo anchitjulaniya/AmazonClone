@@ -48,14 +48,6 @@ function Product() {
 
   const handleAddToCart = (product) => {
     dispatch(ADD_TO_CART(product));
-    // toast("Product Added to cart", {
-    //   position: "bottom-right",
-    //   autoClose: 1800,
-    //   closeOnClick: true,
-    //   progress: undefined,
-    //   theme: "light",
-    //   transition: Bounce,
-    // });
     toast.success("Product Added to cart!", {
       position: "bottom-right",
       theme: "colored",
@@ -63,16 +55,16 @@ function Product() {
   };
 
   return (
-    <div className="flex">
+    <div className="flex flex-col xl:flex-row overflow-x-auto">
       <Sidebar onSortChange={handleSortChange} />
       <div className="pl-20 flex flex-col gap-5 py-10">
         {sortedProducts.map((product) => (
           <div key={product.asin} className="flex items-center">
-            <div className="w-[280px] min-w-[279px] h-[303px] flex justify-center pt-7 relative bg-[rgb(247,247,247)]">
+            <div className="xl:w-[280px] xl:min-w-[279px] xl:h-[303px] flex justify-center items-center pt-7 relative bg-[rgb(247,247,247)]">
               <img
                 src={product.product_photo}
                 alt="product image"
-                className="h-[217px] w-[177px] duration-500 hover:scale-105"
+                className="w-[98%] h-1/2 min-h-1/2 min-w-[177px] xl:h-[217px] xl:w-[177px] duration-500 hover:scale-105"
               />
               <span
                 className={` ${

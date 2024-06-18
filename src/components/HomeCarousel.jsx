@@ -17,9 +17,7 @@ import HomeCarousal6 from '../assets/HomeCarousel/6.jpg'
 import HomeCarousal7 from '../assets/HomeCarousel/7.jpg'
 import HomeCarousal8 from '../assets/HomeCarousel/8.jpg'
 
-
-
-const images = [HomeCarousal1,HomeCarousal2,HomeCarousal3,HomeCarousal4,HomeCarousal5,HomeCarousal6,HomeCarousal7,HomeCarousal8];
+const images = [HomeCarousal1, HomeCarousal2, HomeCarousal3, HomeCarousal4, HomeCarousal5, HomeCarousal6, HomeCarousal7, HomeCarousal8];
 
 function HomeCarousel() {
 

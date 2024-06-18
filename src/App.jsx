@@ -54,7 +54,7 @@ function App() {
     <>
     <MantineProvider>
     <ToastContainer />
-      <Header name={name} setName={setName} query={query} setQuery={setQuery} searchresult={searchresult} setSearchresult={setSearchresult} call = {call} />
+      <Header name={name} setName={setName} query={query} setQuery={setQuery} searchresult={searchresult} setSearchresult={setSearchresult} setUseremail={setUseremail} call = {call} />
       <Outlet context = {[name, setName, query, setQuery, searchresult, setSearchresult ]} />
     </MantineProvider>  
     <Footer />

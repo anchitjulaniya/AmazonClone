@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "../assets/HomeCarousel/amazonin.svg";
@@ -21,11 +21,14 @@ export function SignIn() {
 
   const [userEmail,  setUseremail] = useContext(myContext);
 
-  if(userEmail){
-    console.log(userEmail);
-    navigate('/');
-  }
-
+  useEffect(()=>{
+    if(userEmail){
+      console.log(userEmail);
+      navigate('/');
+    }
+  
+  },[])
+  
 
   const handleToast = () => {
     toast("hello", {
