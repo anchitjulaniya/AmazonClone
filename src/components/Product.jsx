@@ -11,6 +11,8 @@ import { useParams } from "react-router-dom";
 function Product() {
   const { selectedPage } = useParams();
   const [sortedProducts, setSortedProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10; // Number of products per page
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.productCart);
 
@@ -51,15 +53,82 @@ function Product() {
     toast.success("Product Added to cart!", {
       position: "bottom-right",
       theme: "colored",
-    })
+    });
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    const maxPageNumbers = 5; // Max number of page buttons to display
+    const halfMaxPageNumbers = Math.floor(maxPageNumbers / 2);
+
+    let startPage = Math.max(1, currentPage - halfMaxPageNumbers);
+    let endPage = Math.min(totalPages, currentPage + halfMaxPageNumbers);
+
+    if (currentPage <= halfMaxPageNumbers) {
+      endPage = Math.min(totalPages, maxPageNumbers);
+    }
+
+    if (currentPage + halfMaxPageNumbers >= totalPages) {
+      startPage = Math.max(1, totalPages - maxPageNumbers + 1);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className={`px-4 py-2 ${currentPage === i ? 'bg-blue-500 text-white' : 'bg-gray-300 hover:bg-gray-400'}`}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    if (startPage > 1) {
+      pageNumbers.unshift(
+        <button
+          key="1"
+          onClick={() => handlePageChange(1)}
+          className={`px-4 py-2 ${currentPage === 1 ? 'bg-blue-500 text-white' : 'bg-gray-300 hover:bg-gray-400'}`}
+        >
+          1
+        </button>,
+        <span key="start-ellipsis" className="px-4 py-2">...</span>
+      );
+    }
+
+    if (endPage < totalPages) {
+      pageNumbers.push(
+        <span key="end-ellipsis" className="px-4 py-2">...</span>,
+        <button
+          key={totalPages}
+          onClick={() => handlePageChange(totalPages)}
+          className={`px-4 py-2 ${currentPage === totalPages ? 'bg-blue-500 text-white' : 'bg-gray-300 hover:bg-gray-400'}`}
+        >
+          {totalPages}
+        </button>
+      );
+    }
+
+    return pageNumbers;
   };
 
   return (
     <div className="flex flex-col xl:flex-row overflow-x-auto">
       <Sidebar onSortChange={handleSortChange} />
       <div className="pl-20 flex flex-col gap-5 py-10">
-        {sortedProducts.map((product) => (
-          <div key={product.asin} className="flex items-center">
+        {currentProducts.map((product) => (
+          // md view
+          <div key={product.asin} className="hidden md:flex items-center">
             <div className="xl:w-[280px] xl:min-w-[279px] xl:h-[303px] flex justify-center items-center pt-7 relative bg-[rgb(247,247,247)]">
               <img
                 src={product.product_photo}
@@ -118,7 +187,27 @@ function Product() {
               </div>
             </div>
           </div>
+
+
+       
         ))}
+        <div className="flex justify-center mt-4">
+          <button 
+            onClick={() => handlePageChange(currentPage - 1)} 
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
+          >
+            Previous
+          </button>
+          {renderPageNumbers()}
+          <button 
+            onClick={() => handlePageChange(currentPage + 1)} 
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
