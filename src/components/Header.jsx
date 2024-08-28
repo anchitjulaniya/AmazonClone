@@ -131,8 +131,8 @@ const Header = ({ name, setName, query, setQuery, setUseremail, call }) => {
 const SearchBar = ({ query, setQuery, search, isMobile }) => (
   <div
     className={`${
-      isMobile ? "md:hidden" : "hidden md:flex"
-    } items-center w-full lg:w-[40%] xl:w-[50%] border-4 border-[rgb(19,25,33)] focus:border-yellow-400 mx-2 rounded-lg overflow-hidden`}
+      isMobile ? "flex md:hidden" : "hidden md:flex"
+    } items-start w-full lg:w-[40%] xl:w-[50%] border-4 border-[rgb(19,25,33)] focus:border-yellow-400 mx-2 rounded-lg overflow-hidden`}
   >
     <select className="h-10 border-none w-[10px] xl:w-[140px] 2xl:w-[160px] text-black px-2 bg-gray-100">
       {amazonCategories.map((category, index) => (
